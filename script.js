@@ -1,6 +1,4 @@
 // const { fetchProducts } = require("./helpers/fetchProducts");
-const sectionItems = document.querySelector('.items');
-
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -28,7 +26,9 @@ function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
   return section;
 }
 
+// Adiciona os itens na tela
 const rendersProduct = async () => {
+  const sectionItems = document.querySelector('.items');
   const products = await fetchProducts('computador');
   const { results } = products;
   // Fazer um map no results pra mudar o valor das chaves da função createProductItemElement
@@ -55,6 +55,7 @@ function createCartItemElement({ sku, name, salePrice }) {
 }
 
 // Requisito 2 concluído durante a Monitoria Summer com o Roberval na explicação para a Tamiris Shigaki
+// Adiciona os itens ao carrinho
 function addButtonsEvent() {
   const items = document.querySelectorAll('.item');
   items.forEach((item) => {
