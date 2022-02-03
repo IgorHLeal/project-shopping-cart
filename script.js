@@ -1,6 +1,5 @@
 // const { fetchProducts } = require("./helpers/fetchProducts");
 const sectionItems = document.querySelector('.items');
-// const catItems = document.querySelector('.cart__items');
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -16,6 +15,7 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
+// Requisito 1
 function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
   const section = document.createElement('section');
   section.className = 'item';
@@ -28,22 +28,6 @@ function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
   return section;
 }
 
-/* function getSkuFromProductItem(item) {
-  return item.querySelector('span.item__sku').innerText;
-}
-
-function cartItemClickListener(event) {
-  // coloque seu código aqui
-} */
-
-/* function createCartItemElement({ id: sku, id: name, id: salePrice }) {
-  const li = document.createElement('li');
-  li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
-  li.addEventListener('click', cartItemClickListener);
-  return li;
-} */
-
 const rendersProduct = async () => {
   const products = await fetchProducts('computador');
   const { results } = products;
@@ -54,7 +38,44 @@ const rendersProduct = async () => {
   return results;
 };
 
-window.onload = () => { 
-  fetchProducts('computador');
+function getSkuFromProductItem(item) {
+  return item.querySelector('span.item__sku').innerText;
+}
+
+/* function cartItemClickListener(event) {
+  // coloque seu código aqui
+} */
+
+function createCartItemElement({ sku, name, salePrice }) {
+  const li = document.createElement('li');
+  li.className = 'cart__item';
+  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.addEventListener('click', cartItemClickListener);
+  return li;
+}
+
+// Requisito 2 concluído durante a Monitoria Summer com o Roberval na explicação para a Tamiris Shigaki
+// Falta finalizar...
+function addButtonsEvent() {
+  const items = document.querySelectorAll('.item');
+  items.forEach((item) => {
+    const sku = getSkuFromProductItem(item);
+    const button = item.querySelector('button');
+    button.addEventListener('click', async () => {
+      const object = await fetchItem(sku);
+      const createObject = {
+        sku: object.id,
+        name: object.title,
+        salePrice: object.price,
+      };
+      
+      const cartItems = document.querySelector('.cart__items');
+      cartItems.appendChild(createCartItemElement(createObject));
+    });
+  });
+}  
+
+window.onload = async () => { 
   rendersProduct();
+  addButtonsEvent();
 };
