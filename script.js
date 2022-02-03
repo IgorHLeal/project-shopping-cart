@@ -16,7 +16,7 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
-function createProductItemElement({ sku, name, image }) {
+function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
   const section = document.createElement('section');
   section.className = 'item';
 
@@ -47,6 +47,9 @@ function createCartItemElement({ id: sku, id: name, id: salePrice }) {
 const rendersProduct = async () => {
   const products = await fetchProducts('computador');
   const { results } = products;
+  // Fazer um map no results pra mudar o valor das chaves da função createProductItemElement
+  // colocar esse map em uma const
+  // Fazer um forEach nessa const com o map
   results.forEach((item) => { sectionItems.appendChild(createProductItemElement(item)); });
   return results;
 };
