@@ -42,8 +42,8 @@ function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
 
-function cartItemClickListener(_event) {
-  // coloque seu código aqui
+function cartItemClickListener(event) {
+  event.target.remove();
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -55,7 +55,6 @@ function createCartItemElement({ sku, name, salePrice }) {
 }
 
 // Requisito 2 concluído durante a Monitoria Summer com o Roberval na explicação para a Tamiris Shigaki
-// Falta finalizar...
 function addButtonsEvent() {
   const items = document.querySelectorAll('.item');
   items.forEach((item) => {
