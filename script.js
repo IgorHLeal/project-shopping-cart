@@ -1,6 +1,6 @@
 // const { fetchProducts } = require("./helpers/fetchProducts");
-
 const sectionItems = document.querySelector('.items');
+// const catItems = document.querySelector('.cart__items');
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -34,9 +34,9 @@ function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
 
 function cartItemClickListener(event) {
   // coloque seu código aqui
-}
+} */
 
-function createCartItemElement({ id: sku, id: name, id: salePrice }) {
+/* function createCartItemElement({ id: sku, id: name, id: salePrice }) {
   const li = document.createElement('li');
   li.className = 'cart__item';
   li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
