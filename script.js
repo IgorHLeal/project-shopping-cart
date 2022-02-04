@@ -79,6 +79,7 @@ function addButtonsEvent() {
 }
 
 // Requisito 4
+// Concluído com ajuda do Rafael Oliveira - Turma 19A
 function saveLocalStorage() {
   cartItems.innerHTML = getSavedCartItems();
   Array.from(cartItems.children).forEach((item) => {
@@ -86,8 +87,18 @@ function saveLocalStorage() {
   });
 }
 
+// Requisito 5
+function emptyCart() {
+  const button = document.querySelector('.empty-cart');
+  button.addEventListener('click', () => {
+    cartItems.innerHTML = '';
+    saveCartItems(cartItems.innerHTML);
+  });
+}
+
 window.onload = async () => { 
   await rendersProduct();
   addButtonsEvent();
   saveLocalStorage();
+  emptyCart();
 };
