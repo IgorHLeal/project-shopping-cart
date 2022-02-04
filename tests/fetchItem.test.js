@@ -22,14 +22,14 @@ describe('2 - Teste a função fecthItem', () => {
     expect(fetch).toHaveBeenCalledWith(endpoint);
   });
 
-  it('Teste se o retorno da função fetchItem com o argumento do item "MLB1615760527" é uma estrutura de dados igual ao objeto item que já está importado no arquivo', async () => {
+  it('2.4 - Teste se o retorno da função fetchItem com o argumento do item "MLB1615760527" é uma estrutura de dados igual ao objeto item que já está importado no arquivo', async () => {
     expect.assertions(1);
 
     const result = await fetchItem('MLB1615760527');
     expect(result).toEqual(item);
   });
 
-  it('Teste se, ao chamar a função fetchItem sem argumento, retorna um erro com a mensagem: You must provide an url', async () => {
+  it('2.5 - Teste se, ao chamar a função fetchItem sem argumento, retorna um erro com a mensagem: You must provide an url', async () => {
     expect.assertions(1);
 
       const result = await fetchItem();
