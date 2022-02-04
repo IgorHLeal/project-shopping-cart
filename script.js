@@ -1,4 +1,3 @@
-// const { fetchProducts } = require("./helpers/fetchProducts");
 const cartItems = document.querySelector('.cart__items');
 
 function createProductImageElement(imageSource) {
@@ -88,6 +87,17 @@ function saveLocalStorage() {
 }
 
 // Requisito 5
+// Adicionar o elemento ao Html
+/* function addPrice() {
+  // const dadClass = document.querySelector('container-cartTitle');
+  const subTotal = document.createElement('p');
+  subTotal.className = 'total-price';
+  subTotal.innerText = 'Valor total: R$';
+  .appendChild(subTotal); */
+
+// Criar uma função de soma
+
+// Requisito 6
 function emptyCart() {
   const button = document.querySelector('.empty-cart');
   button.addEventListener('click', () => {
@@ -101,4 +111,5 @@ window.onload = async () => {
   addButtonsEvent();
   saveLocalStorage();
   emptyCart();
+  totalPrice();
 };

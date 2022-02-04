@@ -73,6 +73,11 @@ body {
   font-weight: 700;
 }
 
+.container-cartTitle .total-price {
+  color: black;
+  font-size: 10px;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
