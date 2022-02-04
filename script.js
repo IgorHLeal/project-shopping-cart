@@ -1,4 +1,6 @@
 // const { fetchProducts } = require("./helpers/fetchProducts");
+const cartItems = document.querySelector('.cart__items');
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -42,8 +44,10 @@ function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
 
+// Requisito 3
 function cartItemClickListener(event) {
   event.target.remove();
+  saveCartItems(cartItems.innerHTML);
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -68,15 +72,22 @@ function addButtonsEvent() {
         name: object.title,
         salePrice: object.price,
       };
-      
-      const cartItems = document.querySelector('.cart__items');
       cartItems.appendChild(createCartItemElement(createObject));
+      saveCartItems(cartItems.innerHTML);
     });
-    // console.log(sku);
   });
-}  
+}
+
+// Requisito 4
+function saveLocalStorage() {
+  cartItems.innerHTML = getSavedCartItems();
+  Array.from(cartItems.children).forEach((item) => {
+    item.addEventListener('click', cartItemClickListener);
+  });
+}
 
 window.onload = async () => { 
   await rendersProduct();
   addButtonsEvent();
+  saveLocalStorage();
 };
