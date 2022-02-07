@@ -87,7 +87,6 @@ function saveLocalStorage() {
 }
 
 // Requisito 5
-// Adicionar o elemento ao Html
 /* function addPrice() {
   // const dadClass = document.querySelector('container-cartTitle');
   const subTotal = document.createElement('p');

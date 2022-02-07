@@ -16,7 +16,7 @@ describe('1 - Teste a função fecthProducts', () => {
     await fetchProducts('computador');
     expect(fetch).toHaveBeenCalled();
   });
-  const { id } = require("../mocks/item");
+  // const { id } = require("../mocks/item");
   it('1.3 - Teste se, ao chamar a função fetchProducts com o argumento "computador", a função fetch utiliza o endpoint "https://api.mercadolibre.com/sites/MLB/search?q=computador"', async () => {
   expect.assertions(1);
 
