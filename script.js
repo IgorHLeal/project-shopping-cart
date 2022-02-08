@@ -1,4 +1,27 @@
 const cartItems = document.querySelector('.cart__items');
+const totalPrice = document.querySelector('.total-price');
+
+// Requisito 5
+// Concluído com ajuda do Pedro Fideles - Turma 19A
+const addPrice = (acc, curr) => {
+  const itemPrice = curr.innerHTML.split('$')[1];
+  return acc + parseFloat(itemPrice);
+  /* const subTotal = document.createElement('p');
+  subTotal.className = 'total-price';
+  subTotal.innerText = 'Valor total: R$';
+  cart.appendChild(subTotal); */
+};
+// addPrice();
+
+// Criar uma função de soma
+const sumTotalPrice = () => {
+  const cartItem = document.querySelectorAll('.cart__item');
+  console.log((Object.values(cartItem)));
+  const price = Object.values(cartItem).reduce(addPrice, 0);
+  totalPrice.innerHTML = price;
+};
+
+// ------------------------------------------------ //
 
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
@@ -26,21 +49,6 @@ function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
 
   return section;
 }
-
-// Requisito 5
-const addPrice = () => {
-  const totalPrice = document.querySelector('.total-price');
-  const cartValues = 0;
-
-  totalPrice.innerHTML = cartValues;
-  /* const subTotal = document.createElement('p');
-  subTotal.className = 'total-price';
-  subTotal.innerText = 'Valor total: R$';
-  cart.appendChild(subTotal); */
-};
-
-addPrice();
-// Criar uma função de soma
 
 // Requisito 7
 const loading = () => {
@@ -76,6 +84,7 @@ function getSkuFromProductItem(item) {
 function cartItemClickListener(event) {
   event.target.remove();
   saveCartItems(cartItems.innerHTML);
+  sumTotalPrice();
 }
 
 function createCartItemElement({ sku, name, salePrice }) {
@@ -102,6 +111,7 @@ function addButtonsEvent() {
       };
       cartItems.appendChild(createCartItemElement(createObject));
       saveCartItems(cartItems.innerHTML);
+      sumTotalPrice();
     });
   });
 }
@@ -121,6 +131,7 @@ function emptyCart() {
   button.addEventListener('click', () => {
     cartItems.innerHTML = '';
     saveCartItems(cartItems.innerHTML);
+    sumTotalPrice();
   });
 }
 
@@ -130,4 +141,5 @@ window.onload = async () => {
   addButtonsEvent();
   saveLocalStorage();
   emptyCart();
+  sumTotalPrice();
 };
