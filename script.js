@@ -27,10 +27,39 @@ function createProductItemElement({ id: sku, title: name, thumbnail: image }) {
   return section;
 }
 
+// Requisito 5
+const addPrice = () => {
+  const totalPrice = document.querySelector('.total-price');
+  const cartValues = 0;
+
+  totalPrice.innerHTML = cartValues;
+  /* const subTotal = document.createElement('p');
+  subTotal.className = 'total-price';
+  subTotal.innerText = 'Valor total: R$';
+  cart.appendChild(subTotal); */
+};
+
+addPrice();
+// Criar uma função de soma
+
+// Requisito 7
+const loading = () => {
+  const message = document.createElement('p');
+  message.className = 'loading';
+  message.textContent = 'Carregando...';
+  cartItems.appendChild(message);
+};
+
+const removeLoading = () => {
+  const loadingMessage = document.querySelector('.loading');
+  loadingMessage.remove();
+};
+
 // Adiciona os itens na tela
 const rendersProduct = async () => {
   const sectionItems = document.querySelector('.items');
   const products = await fetchProducts('computador');
+  removeLoading();
   const { results } = products;
   // Fazer um map no results pra mudar o valor das chaves da função createProductItemElement
   // colocar esse map em uma const
@@ -86,16 +115,6 @@ function saveLocalStorage() {
   });
 }
 
-// Requisito 5
-/* function addPrice() {
-  // const dadClass = document.querySelector('container-cartTitle');
-  const subTotal = document.createElement('p');
-  subTotal.className = 'total-price';
-  subTotal.innerText = 'Valor total: R$';
-  .appendChild(subTotal); */
-
-// Criar uma função de soma
-
 // Requisito 6
 function emptyCart() {
   const button = document.querySelector('.empty-cart');
@@ -106,9 +125,9 @@ function emptyCart() {
 }
 
 window.onload = async () => { 
+  loading();
   await rendersProduct();
   addButtonsEvent();
   saveLocalStorage();
   emptyCart();
-  totalPrice();
 };
