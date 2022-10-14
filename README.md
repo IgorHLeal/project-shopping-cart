@@ -11,7 +11,7 @@ O projeto foi iniciado ao final do Bloco 09 do Módulo de Fundamentos do Desenvo
 
 Foi utilizada a API do [Mercado Livre](https://www.mercadolivre.com.br/) para realizar as requisições e obter os detalhes de cada produto em tela.
 
-A página é um site de comércio de eletrônicos em que o usuário pode adicionar ou remover itens do seu carrinho de comprar e visualizar o valor total de sua compra em tempo real.
+A página é um site de comércio de eletrônicos em que o usuário pode adicionar ou remover itens do seu carrinho de compras e visualizar o valor total de sua compra em tempo real.
 
 [Clique aqui](https://igorhleal.github.io/project-shopping-cart/) para acessar a página em seu navegador.
 
